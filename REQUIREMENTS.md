@@ -33,20 +33,20 @@ http://localhost/api
 
 #### Product
 
-- id - PRIMARY SERIAL KEY
+- id - SERIAL PRIMARY KEY
 - name - VARCHAR
 - price - INTEGER
 
 #### User
 
-- id PRIMARY SERIAL KEY
+- id SERIAL PRIMARY KEY
 - firstName - VARCHAR
 - lastName - VARCHAR
 - password - VARCHAR
 
 #### Orders
 
-- id - PRIMARY SERIAL KEY
+- id - SERIAL PRIMARY KEY
 - id of each product (foreign key from product table)
 - quantity of each product in the order - INTEGER
 - user_id (foreign key from product table)
