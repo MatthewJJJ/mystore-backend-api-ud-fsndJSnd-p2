@@ -19,13 +19,13 @@ let client = new Pool({
   password: PASSWORD,
 });
 
-// if (ENV === "test") {
-//   client = new Pool({
-//     host: HOST,
-//     database: TEST_DATABASE,
-//     user: USER,
-//     password: PASSWORD,
-//   });
-// }
+if (ENV === "test") {
+  client = new Pool({
+    host: HOST,
+    database: TEST_DATABASE,
+    user: USER,
+    password: PASSWORD,
+  });
+}
 
 export default client;

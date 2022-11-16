@@ -15,19 +15,21 @@ http://localhost/api
 - Index: [GET] /products
 - Show: [GET] /products?id=prod_id
 - Create: [POST] /products
-  - Requires a request header including auth token...
+  (request requires token authorization)
 
 #### Users
 
 - Index: [GET] /users
+  (request requires token authorization)
 - Show: [GET] /users?id=user_id
+  (request requires token authorization)
 - Create: [POST] /users
-  - Requires a request header including auth token...
+  (request returns a token to be used by the user later)
 
 #### Orders
 
 - Current Order by user: [GET] /orders?id=user_id
-  - Requires a request header including auth token...
+  (request requires token authorization)
 
 ## Data Shapes
 

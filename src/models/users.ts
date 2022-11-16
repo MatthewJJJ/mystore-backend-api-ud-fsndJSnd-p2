@@ -1,5 +1,6 @@
 import client from "../database";
 import bcrypt from "bcrypt";
+import { generateJWT } from "../services/authService";
 
 export type User = {
   first_name: string;
@@ -41,19 +42,51 @@ export class UserTable {
   ): Promise<String> {
     try {
       const conn = await client.connect();
-      let secret = process.env.secret;
-      console.log(secret);
-      let hashedPassword = bcrypt.hashSync(password + secret, 3);
-      console.log(hashedPassword.length);
+      const secret = process.env.secret;
+      const hashedPassword = bcrypt.hashSync(password + secret, 3);
+      const user: User = {
+        first_name: first_name,
+        last_name: last_name,
+        hashed_password: hashedPassword,
+      };
+
       const sql =
         "insert into users(first_name, last_name, password) values($1, $2, $3);";
+
       const result = await conn.query(sql, [
         first_name,
         last_name,
         hashedPassword,
       ]);
+
+      console.log(result);
+
       conn.release();
-      return JSON.stringify(result);
+      return generateJWT(user);
+    } catch (error) {
+      console.error(error);
+      throw new Error(String(error));
+    }
+  }
+
+  async login(
+    first_name: string,
+    last_name: string,
+    password: string
+  ): Promise<String> {
+    try {
+      const conn = await client.connect();
+      const secret = process.env.secret;
+      const sql = "select * from users where first_name=$1 and last_name=$2;";
+
+      const result = await conn.query(sql, [first_name, last_name]);
+
+      if (!bcrypt.compareSync(password + secret, result.rows[0].password)) {
+        throw new Error("Password is incorrect...");
+      }
+
+      conn.release();
+      return generateJWT(result.rows[0]);
     } catch (error) {
       console.error(error);
       throw new Error(String(error));

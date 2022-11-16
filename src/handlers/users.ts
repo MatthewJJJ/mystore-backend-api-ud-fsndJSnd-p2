@@ -42,4 +42,20 @@ routes.post("/users", async (req: Request, res: Response) => {
   }
 });
 
+routes.post("/login", async (req: Request, res: Response) => {
+  try {
+    const loginResult = await table.login(
+      req.body.first_name,
+      req.body.last_name,
+      req.body.password
+    );
+
+    res.json(loginResult);
+  } catch (error) {
+    console.error(error);
+    res.status(400);
+    res.json(error);
+  }
+});
+
 export default routes;
