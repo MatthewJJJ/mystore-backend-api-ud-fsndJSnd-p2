@@ -1,22 +1,28 @@
-import express, { Response, Request } from "express";
-import orderService from "../services/orderService";
-import { authUserWithJWTMiddleware } from "../services/authService";
+import express, { Response, Request } from 'express';
+import orderService from '../services/orderService';
+import { authUserWithJWT } from '../services/authService';
 
 const routes = express.Router();
 
-routes.get(
-  "/orders",
-  [authUserWithJWTMiddleware],
-  async (req: Request, res: Response) => {
+routes.get('/orders', async (req: Request, res: Response) => {
     try {
-      const orders = await orderService(Number(req.query.id));
-      res.json(orders);
+        authUserWithJWT(req);
     } catch (error) {
-      console.error(error);
-      res.status(400);
-      res.json(error);
+        console.error(error);
+        res.json({
+            status: 'error',
+            errorMessage: 'User Authentication Failed!  Please login again...',
+        });
+        res.status(401);
     }
-  }
-);
+    try {
+        const orders = await orderService(Number(req.query.id));
+        res.json({ status: 'success', orders: orders });
+    } catch (error) {
+        console.error(error);
+        res.json({ status: 'error', errorMessage: error });
+        res.status(401);
+    }
+});
 
 export default routes;
