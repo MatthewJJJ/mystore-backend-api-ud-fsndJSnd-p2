@@ -1,6 +1,6 @@
 import { User } from '../models/users';
 import jsonwebtoken from 'jsonwebtoken';
-import { Request, Response } from 'express';
+import { Request } from 'express';
 
 const generateJWT = (user: User) => {
     let secret = process.env.secret ? process.env.secret : '';
