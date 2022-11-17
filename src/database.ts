@@ -5,13 +5,6 @@ dotenv.config();
 
 const { HOST, DATABASE, USER, PASSWORD, TEST_DATABASE, ENV } = process.env;
 
-console.log({
-    host: HOST,
-    database: DATABASE,
-    user: USER,
-    password: PASSWORD,
-});
-
 let client = new Pool({
     host: HOST,
     database: DATABASE,

@@ -59,8 +59,6 @@ export class UserTable {
                 hashedPassword,
             ]);
 
-            console.log(result);
-
             conn.release();
             return generateJWT(user);
         } catch (error) {
@@ -89,6 +87,7 @@ export class UserTable {
             }
 
             conn.release();
+
             return generateJWT(result.rows[0]);
         } catch (error) {
             console.error(error);

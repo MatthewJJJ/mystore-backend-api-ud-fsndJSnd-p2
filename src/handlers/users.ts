@@ -80,7 +80,6 @@ routes.post('/login', async (req: Request, res: Response) => {
             req.body.last_name,
             req.body.password
         );
-
         res.json({ status: 'success', token: loginResult });
     } catch (error) {
         console.error(error);

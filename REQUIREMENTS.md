@@ -12,44 +12,44 @@ http://localhost/api
 
 #### Products
 
-- Index: [GET] /products
-- Show: [GET] /products?id=prod_id
-- Create: [POST] /products
-  (request requires token authorization)
+-   Index: [GET] /products
+-   Show: [GET] /products?id=prod_id
+-   Create: [POST] /products
+    (request requires token authorization)
 
 #### Users
 
-- Index: [GET] /users
-  (request requires token authorization)
-- Show: [GET] /users?id=user_id
-  (request requires token authorization)
-- Create: [POST] /users
-  (request returns a token to be used by the user later)
+-   Index: [GET] /users
+    (request requires token authorization)
+-   Show: [GET] /users?id=user_id
+    (request requires token authorization)
+-   Create: [POST] /users
+    (request returns a token to be used by the user later)
 
 #### Orders
 
-- Current Order by user: [GET] /orders?id=user_id
-  (request requires token authorization)
+-   Current Order by user: [GET] /orders?id=user_id
+    (request requires token authorization)
 
 ## Data Shapes
 
 #### Product
 
-- id - SERIAL PRIMARY KEY
-- name - VARCHAR
-- price - INTEGER
+-   id - SERIAL PRIMARY KEY
+-   name - VARCHAR
+-   price - INTEGER
 
 #### User
 
-- id SERIAL PRIMARY KEY
-- firstName - VARCHAR
-- lastName - VARCHAR
-- password - VARCHAR
+-   id SERIAL PRIMARY KEY
+-   firstName - VARCHAR
+-   lastName - VARCHAR
+-   password - VARCHAR
 
 #### Orders
 
-- id - SERIAL PRIMARY KEY
-- id of each product (foreign key from product table)
-- quantity of each product in the order - INTEGER
-- user_id (foreign key from product table)
-- status of order (active or complete) - VARCHAR
+-   id - SERIAL PRIMARY KEY
+-   id of each product (foreign key from product table)
+-   quantity of each product in the order - INTEGER
+-   user_id (foreign key from product table)
+-   status of order (active or complete) - VARCHAR
