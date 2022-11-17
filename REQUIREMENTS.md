@@ -25,6 +25,8 @@ http://localhost/api
     (request requires token authorization)
 -   Create: [POST] /users
     (request returns a token to be used by the user later)
+-   Login: [POST] /login
+    (request generates a token for a user given they have enter the correct password)
 
 #### Orders
 

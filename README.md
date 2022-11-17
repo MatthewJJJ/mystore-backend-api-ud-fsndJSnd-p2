@@ -21,7 +21,7 @@ http://localhost/api
 
 ### Environment Variables
 
--   Create a .env file and put the following in it
+-   Update .env file and correct values in it. Example:
 
 HOST=127.0.0.1
 DATABASE=my_store
