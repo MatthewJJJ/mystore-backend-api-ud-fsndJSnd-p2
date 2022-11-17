@@ -18,7 +18,7 @@ const authUserWithJWT = (req: Request) => {
 
         let validationResult = jsonwebtoken.verify(jwt, secret);
 
-        return validationResult;
+        return validationResult !== null;
     } catch (error) {
         throw Error('User Authentication Failed!');
     }

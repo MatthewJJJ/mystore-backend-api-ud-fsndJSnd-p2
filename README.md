@@ -17,7 +17,7 @@ http://localhost/api
 -   Run migrations for test and dev
     `db migrate up`
     `db-migrate up --config database.json -e test`
--   At this point you should have a my_store and my_store_test database with all of the necessary test data provisioned
+-   At this point you should have a my_store and my_store_test database with the current tables provisioned
 
 ### Environment Variables
 
@@ -32,7 +32,7 @@ SECRET=asjdfklasjf7234823748&\*@
 
 ### Testing the Code (Manually)
 
--   I've provider a Postman collection in the repository with a valid JWT that each call needing JWT auth inherits
+-   I've provided a Postman collection in the repository with a valid JWT that each call needing JWT auth inherits
 -   Import and execute the Postman requests in sequence and functionality should be easily tested (provided database was set up)
 -   JSON file is named `storefront-api-requests.postman_collection.json`
 
@@ -41,5 +41,4 @@ SECRET=asjdfklasjf7234823748&\*@
 ### Testing the Code with Scripts
 
 -   Run `npm run test` to run the testing suite
--   These tests are dependant on having the test data provisioned from migration for test database so be sure to run the migration or tests will fail
 -   Note: Make sure regular server is stopped as test server will attempt to run on same port
