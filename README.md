@@ -36,6 +36,8 @@ SECRET=asjdfklasjf7234823748&\*@
 -   Import and execute the Postman requests in sequence and functionality should be easily tested (provided database was set up)
 -   JSON file is named `storefront-api-requests.postman_collection.json`
 
+**_Note: You can also perform manually testing by making request to base url but Postman Collection has all of the requests already formatted..._**
+
 ### Testing the Code with Scripts
 
 -   Run `npm run test` to run the testing suite
