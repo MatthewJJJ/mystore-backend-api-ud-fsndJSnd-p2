@@ -17,7 +17,7 @@ routes.get('/orders', async (req: Request, res: Response) => {
     }
     try {
         const orders = await orderService(Number(req.query.id));
-        res.json({ status: 'success', orders: orders });
+        res.json({ status: 'success', order: orders });
     } catch (error) {
         console.error(error);
         res.json({ status: 'error', errorMessage: error });

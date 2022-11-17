@@ -1,6 +1,6 @@
 {
     "spec_dir": "spec",
-    "spec_files": ["../**/_tests/*[S]pec.ts"],
+    "spec_files": ["../**/_tests/**/*[S]pec.ts"],
     "helpers": ["helpers/**/*.js"],
     "reporters": [
         {
