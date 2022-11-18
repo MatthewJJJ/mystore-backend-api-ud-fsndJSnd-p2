@@ -4,17 +4,7 @@ import { authUserWithJWT } from '../services/authService';
 
 const routes = express.Router();
 
-routes.get('/orders', async (req: Request, res: Response) => {
-    try {
-        authUserWithJWT(req);
-    } catch (error) {
-        console.error(error);
-        res.json({
-            status: 'error',
-            errorMessage: 'User Authentication Failed!  Please login again...',
-        });
-        res.status(401);
-    }
+routes.get('/orders', authUserWithJWT, async (req: Request, res: Response) => {
     try {
         const orders = await orderService(Number(req.query.id));
         res.json({ status: 'success', order: orders });

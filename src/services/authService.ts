@@ -1,6 +1,6 @@
 import { User } from '../models/users';
 import jsonwebtoken from 'jsonwebtoken';
-import { Request } from 'express';
+import { Request, Response } from 'express';
 
 const generateJWT = (user: User) => {
     let secret = process.env.secret ? process.env.secret : '';
@@ -8,7 +8,7 @@ const generateJWT = (user: User) => {
     return myJWT;
 };
 
-const authUserWithJWT = (req: Request) => {
+const authUserWithJWT = (req: Request, res: Response, next: Function) => {
     try {
         let secret = process.env.secret ? process.env.secret : '';
         const authorizationHeader = req.headers.authorization;
@@ -17,8 +17,9 @@ const authUserWithJWT = (req: Request) => {
             : '';
 
         let validationResult = jsonwebtoken.verify(jwt, secret);
+        console.log(validationResult);
 
-        return validationResult !== null;
+        next();
     } catch (error) {
         throw Error('User Authentication Failed!');
     }

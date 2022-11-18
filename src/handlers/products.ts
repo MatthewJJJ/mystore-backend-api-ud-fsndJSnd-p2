@@ -28,28 +28,22 @@ routes.get('/products/:id', async (req: Request, res: Response) => {
     }
 });
 
-routes.post('/products', async (req: Request, res: Response) => {
-    try {
-        authUserWithJWT(req);
-    } catch (error) {
-        console.error(error);
-        res.json({
-            status: 'error',
-            errorMessage: 'User Authentication Failed!  Please login again...',
-        });
-        res.status(401);
+routes.post(
+    '/products',
+    authUserWithJWT,
+    async (req: Request, res: Response) => {
+        try {
+            const createResult = await table.create(
+                req.body.name,
+                Number(req.body.price)
+            );
+            res.json({ status: 'success', result: createResult });
+        } catch (error) {
+            console.error(error);
+            res.json({ status: 'error', errorMessage: error });
+            res.status(400);
+        }
     }
-    try {
-        const createResult = await table.create(
-            req.body.name,
-            Number(req.body.price)
-        );
-        res.json({ status: 'success', result: createResult });
-    } catch (error) {
-        console.error(error);
-        res.json({ status: 'error', errorMessage: error });
-        res.status(400);
-    }
-});
+);
 
 export default routes;

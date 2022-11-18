@@ -22,7 +22,7 @@ SECRET=asjdfklasjf7234823748&\*@
 
 -   Update database.json with your password if you have one for postgres user
 
-**Note: I realize including the .env file is not best practice but I needed it so you guys could have all the variables.**
+**Note: MAKE SURE THAT SECRET IS THE SAME AS EXAMPLE OR JWTS WILL NOT WORK!!!**
 
 ### Database Setup
 

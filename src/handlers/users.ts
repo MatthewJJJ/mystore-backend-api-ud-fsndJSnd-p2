@@ -6,17 +6,7 @@ const routes = express.Router();
 
 const table = new UserTable();
 
-routes.get('/users', async (req: Request, res: Response) => {
-    try {
-        authUserWithJWT(req);
-    } catch (error) {
-        console.error(error);
-        res.json({
-            status: 'error',
-            errorMessage: 'User Authentication Failed!  Please login again...',
-        });
-        res.status(401);
-    }
+routes.get('/users', authUserWithJWT, async (req: Request, res: Response) => {
     try {
         const users = await table.index();
         res.json({ status: 'success', users: users });
@@ -27,38 +17,22 @@ routes.get('/users', async (req: Request, res: Response) => {
     }
 });
 
-routes.get('/users/:id', async (req: Request, res: Response) => {
-    try {
-        authUserWithJWT(req);
-    } catch (error) {
-        console.error(error);
-        res.json({
-            status: 'error',
-            errorMessage: 'User Authentication Failed!  Please login again...',
-        });
-        res.status(401);
+routes.get(
+    '/users/:id',
+    authUserWithJWT,
+    async (req: Request, res: Response) => {
+        try {
+            const user = await table.show(Number(req.params.id));
+            res.json({ status: 'success', user: user });
+        } catch (error) {
+            console.error(error);
+            res.json({ status: 'error', errorMessage: error });
+            res.status(400);
+        }
     }
-    try {
-        const user = await table.show(Number(req.params.id));
-        res.json({ status: 'success', user: user });
-    } catch (error) {
-        console.error(error);
-        res.json({ status: 'error', errorMessage: error });
-        res.status(400);
-    }
-});
+);
 
-routes.post('/users', async (req: Request, res: Response) => {
-    try {
-        authUserWithJWT(req);
-    } catch (error) {
-        console.error(error);
-        res.json({
-            status: 'error',
-            errorMessage: 'User Authentication Failed!  Please login again...',
-        });
-        res.status(401);
-    }
+routes.post('/users', authUserWithJWT, async (req: Request, res: Response) => {
     try {
         const createResult = await table.create(
             req.body.first_name,
