@@ -11,11 +11,11 @@ http://localhost/api
 
 ### Database Setup
 
--   Create two databases my_store and my_store_test
+-   Create two databases my_store and my_store_test on your default Postgres server
 -   Install migration libraries
     `npm install -g db-migrate db-migrate-pg`
 -   Run migrations for test and dev
-    `db migrate up`
+    `db-migrate up`
     `db-migrate up --config database.json -e test`
 -   At this point you should have a my_store and my_store_test database with the current tables provisioned
 
@@ -29,6 +29,8 @@ TEST_DATABASE=my_store_test
 USER=postgres
 PASSWORD=
 SECRET=asjdfklasjf7234823748&\*@
+
+**Note: Make sure to check the password! Also, check the password in database.json**
 
 ### Testing the Code (Manually)
 

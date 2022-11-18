@@ -2,7 +2,6 @@ import client from '../../database';
 import { UserTable } from '../../models/users';
 import { SQL_DELETE_TEST_DATA_QUERY } from '../TestConstants';
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 const table = new UserTable();
 
 describe('testing user model methods', () => {

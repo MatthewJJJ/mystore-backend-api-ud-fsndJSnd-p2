@@ -20,7 +20,7 @@ routes.get('/orders', async (req: Request, res: Response) => {
         res.json({ status: 'success', order: orders });
     } catch (error) {
         console.error(error);
-        res.json({ status: 'error', errorMessage: error });
+        res.json({ status: 'error', errorMessage: 'No order found...' });
         res.status(401);
     }
 });

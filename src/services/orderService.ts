@@ -7,6 +7,9 @@ let orderService = async (userId: number): Promise<Object[]> => {
             'select orders.id, orders.order_status, orders.quantity, users.first_name, users.last_name, products.name, products.price from orders, users, products where orders.user_id = users.id and orders.product_id = products.id and orders.user_id = $1;';
         const results = await conn.query(sql, [userId]);
         conn.release();
+        if (results.rows.length === 0) {
+            throw new Error('No data found...');
+        }
         return results.rows[0];
     } catch (error) {
         throw new Error(String(error));

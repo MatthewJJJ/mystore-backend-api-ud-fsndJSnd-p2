@@ -3,16 +3,18 @@ import app from '../../server';
 import { JWT } from '../TestConstants';
 import client from '../../database';
 import {
-    SQL_CREATE_TEST_DATA_QUERY,
+    generateSQLCreateTestDataQuery,
     SQL_DELETE_TEST_DATA_QUERY,
 } from '../TestConstants';
 
 const mockApp = supertest(app);
 
 describe('testing orders endpoint', () => {
+    let randomId = Number(Math.floor(Math.random() * 100));
+
     beforeAll(async () => {
         await client.connect();
-        await client.query(SQL_CREATE_TEST_DATA_QUERY);
+        await client.query(generateSQLCreateTestDataQuery(randomId));
     });
 
     afterAll(async () => {
@@ -21,18 +23,18 @@ describe('testing orders endpoint', () => {
 
     it('should return an order when passed a correct id', async () => {
         const response = await mockApp
-            .get('/api/orders?id=3')
+            .get(`/api/orders?id=${randomId}`)
             .set('Authorization', JWT);
         expect(response.status).toBe(200);
         expect(response.body.status).toBe('success');
         expect(response.body.order).toEqual({
-            id: 3,
-            order_status: 'complete',
+            id: randomId,
+            order_status: 'active',
             quantity: 20,
-            first_name: 'Peyton',
-            last_name: 'Manning',
-            name: 'baseball bat',
-            price: 10,
+            first_name: 'Tom',
+            last_name: 'Brady',
+            name: 'basketball',
+            price: 25,
         });
     });
 });

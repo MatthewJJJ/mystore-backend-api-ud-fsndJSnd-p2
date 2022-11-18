@@ -3,16 +3,18 @@ import app from '../../server';
 import { JWT } from '../TestConstants';
 import client from '../../database';
 import {
-    SQL_CREATE_TEST_DATA_QUERY,
+    generateSQLCreateTestDataQuery,
     SQL_DELETE_TEST_DATA_QUERY,
 } from '../TestConstants';
 
 const mockApp = supertest(app);
 
 describe('testing the users endpoints ', () => {
+    let randomId = Number(Math.floor(Math.random() * 100));
+
     beforeAll(async () => {
         await client.connect();
-        await client.query(SQL_CREATE_TEST_DATA_QUERY);
+        await client.query(generateSQLCreateTestDataQuery(randomId));
     });
 
     afterAll(async () => {
@@ -52,12 +54,12 @@ describe('testing the users endpoints ', () => {
             .set('Authorization', JWT);
         expect(response.status).toBe(200);
         expect(response.body.status).toBe('success');
-        expect(response.body.users.length).toBe(4);
+        expect(response.body.users.length).toBe(2);
     });
 
     it('the show route should currently display the user', async () => {
         const response = await mockApp
-            .get('/api/users/1')
+            .get(`/api/users/${randomId}`)
             .set('Authorization', JWT);
         expect(response.status).toBe(200);
         expect(response.body.status).toBe('success');
