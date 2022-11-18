@@ -33,6 +33,8 @@ http://localhost/api
 -   Current Order by user: [GET] /orders?id=user_id
     (request requires token authorization)
 
+**Note if you want something to be return by this you need to run a script in the database. No create / post route was required.**
+
 ## Data Shapes
 
 #### Product
