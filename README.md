@@ -22,6 +22,8 @@ SECRET=asjdfklasjf7234823748&\*@
 
 -   Update database.json with your password if you have one for postgres user
 
+**Note: I realize including the .env file is not best practice but I needed it so you guys could have all the variables.**
+
 ### Database Setup
 
 -   Create two databases my_store and my_store_test on your default Postgres server
