@@ -50,10 +50,12 @@ export class UserTable {
                 hashed_password: hashedPassword,
             };
 
+            const maxId = await conn.query('select max(id) from products;');
             const sql =
-                'insert into users(first_name, last_name, password) values($1, $2, $3);';
+                'insert into users(id, first_name, last_name, password) values($1, $2, $3, $4);';
 
             const result = await conn.query(sql, [
+                maxId.rows[0].max + 1,
                 first_name,
                 last_name,
                 hashedPassword,

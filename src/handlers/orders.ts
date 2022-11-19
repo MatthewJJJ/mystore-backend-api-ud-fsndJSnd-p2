@@ -7,7 +7,7 @@ const routes = express.Router();
 routes.get('/orders', authUserWithJWT, async (req: Request, res: Response) => {
     try {
         const orders = await orderService(Number(req.query.id));
-        res.json({ status: 'success', order: orders });
+        res.json({ status: 'success', order_details: orders });
     } catch (error) {
         console.error(error);
         res.json({ status: 'error', errorMessage: 'No order found...' });

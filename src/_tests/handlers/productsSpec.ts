@@ -13,6 +13,8 @@ describe('testing the products endpoints ', () => {
     let randomId = Number(Math.floor(Math.random() * 100));
 
     beforeAll(async () => {
+        await client.query(SQL_DELETE_TEST_DATA_QUERY);
+        console.log('CLEANED TEST DATABASE...');
         await client.connect();
         await client.query(generateSQLCreateTestDataQuery(randomId));
     });
@@ -37,7 +39,7 @@ describe('testing the products endpoints ', () => {
         const response = await mockApp.get('/api/products');
         expect(response.status).toBe(200);
         expect(response.body.status).toBe('success');
-        expect(response.body.products.length).toBe(2);
+        expect(response.body.products.length).toBe(3);
     });
 
     it('the show route should currently display the product', async () => {

@@ -19,14 +19,25 @@ describe('testing orders endpoint', () => {
 
     it('should return an order when passed a correct id', async () => {
         const response = await orderService(randomId);
-        expect(response as unknown).toEqual({
-            id: randomId,
-            order_status: 'active',
-            quantity: 20,
-            first_name: 'Tom',
-            last_name: 'Brady',
-            name: 'basketball',
-            price: 25,
-        });
+        expect(response as unknown).toEqual([
+            {
+                id: randomId,
+                order_status: 'active',
+                first_name: 'Tom',
+                last_name: 'Brady',
+                quantity: 5,
+                name: 'basketball',
+                price: 25,
+            },
+            {
+                id: randomId,
+                order_status: 'active',
+                first_name: 'Tom',
+                last_name: 'Brady',
+                quantity: 8,
+                name: 'football',
+                price: 12,
+            },
+        ]);
     });
 });

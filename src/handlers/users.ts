@@ -32,7 +32,7 @@ routes.get(
     }
 );
 
-routes.post('/users', authUserWithJWT, async (req: Request, res: Response) => {
+routes.post('/users', async (req: Request, res: Response) => {
     try {
         const createResult = await table.create(
             req.body.first_name,

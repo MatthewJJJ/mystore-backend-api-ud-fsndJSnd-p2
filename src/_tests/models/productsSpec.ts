@@ -27,7 +27,7 @@ describe('testing product model methods', () => {
 
     it('the index method should return all products', async () => {
         const response = await table.index();
-        expect(response.length).toBe(2);
+        expect(response.length).toBe(3);
     });
 
     it('the show method should return the correct product', async () => {

@@ -17,19 +17,11 @@ describe('testing user model methods', () => {
             'dogandponyshow30001'
         );
         expect(typeof responseUser1).toBe('string');
-        expect(responseUser1.length).toBeGreaterThan(0);
-        const responseUser2 = await table.create(
-            'Chery2',
-            'John2',
-            'dogandponyshow30002'
-        );
-        expect(typeof responseUser2).toBe('string');
-        expect(responseUser2.length).toBeGreaterThan(0);
     });
 
     it('the index method should return all users', async () => {
         const response = await table.index();
-        expect(response.length).toBe(2);
+        expect(response.length).toBe(1);
     });
 
     it('the show method should return the correct user', async () => {

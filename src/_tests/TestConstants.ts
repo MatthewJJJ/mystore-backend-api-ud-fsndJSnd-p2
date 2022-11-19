@@ -3,22 +3,38 @@ const JWT =
 
 const generateSQLCreateTestDataQuery = (id: number) => {
     return `
-insert into products (id, name, price) values
-(${id}, 'basketball', 25);
-
-insert into users (id, first_name, last_name, password) values
-(${id}, 'Tom', 'Brady', '$2b$04$TqXxSYuwR9cebsUWHfsyVOWAFA0MHrICOBKNAssxoMVyXbVI
-qpubO');
-
-insert into orders (id, product_id, quantity, user_id, order_status) values
-(${id}, ${id}, 20, ${id}, 'active');
+    insert into products (id, name, price) 
+    values (${id}, 'basketball', 25);
+    
+    insert into users (id, first_name, last_name, password) 
+    values
+    (${id}, 'Tom', 'Brady', '$2b$04$TqXxSYuwR9cebsUWHfsyVOWAFA0MHrICOBKNAssxoMVyXbVI
+    qpubO'),
+    (${
+        id + 1
+    }, 'Peyton', 'Manning', '$2b$04$TqXxSYuwR9cebsUWHfsyVOWAFA0MHrICOBKNAssxoMVyXbVI
+    qpubO');
+    
+    insert into orders (id, user_id, order_status) 
+    values (${id}, ${id}, 'active'), (${id + 1}, ${id + 1}, 'complete');
+    
+    insert into products (id, name, price) 
+    values (${id + 1}, 'football', 12);
+    
+    insert into ordered_products (id, quantity, order_id, product_id)
+    values 
+    (${id}, 5, ${id}, ${id}), 
+    (${id + 1}, 8, ${id}, ${id + 1}), 
+    (${id + 2}, 3, ${id + 1}, ${id}), 
+    (${id + 3}, 12, ${id + 1}, ${id + 1});
 `;
 };
 
 const SQL_DELETE_TEST_DATA_QUERY = `
-delete from orders where id is not null;
-delete from users where id is not null;
-delete from products where id is not null;
+delete from ordered_products where id > 0;
+delete from orders where id > 0;
+delete from users where id > 0;
+delete from products where id > 0;
 `;
 
 export { JWT, generateSQLCreateTestDataQuery, SQL_DELETE_TEST_DATA_QUERY };

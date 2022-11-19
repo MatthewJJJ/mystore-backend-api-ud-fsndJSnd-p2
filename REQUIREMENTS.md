@@ -53,7 +53,12 @@ http://localhost/api
 #### Orders
 
 -   id - SERIAL PRIMARY KEY
--   id of each product (foreign key from product table)
--   quantity of each product in the order - INTEGER
 -   user_id (foreign key from product table)
 -   status of order (active or complete) - VARCHAR
+
+#### Ordered Products
+
+-   id - SERIAL PRIMARY KEY
+-   quantity - INTEGER
+-   order_id (foreign key from orders)
+-   product_id (foreign key from products)

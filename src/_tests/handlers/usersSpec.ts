@@ -54,7 +54,7 @@ describe('testing the users endpoints ', () => {
             .set('Authorization', JWT);
         expect(response.status).toBe(200);
         expect(response.body.status).toBe('success');
-        expect(response.body.users.length).toBe(2);
+        expect(response.body.users.length).toBe(3);
     });
 
     it('the show route should currently display the user', async () => {

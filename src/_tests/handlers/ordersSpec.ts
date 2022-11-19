@@ -27,14 +27,25 @@ describe('testing orders endpoint', () => {
             .set('Authorization', JWT);
         expect(response.status).toBe(200);
         expect(response.body.status).toBe('success');
-        expect(response.body.order).toEqual({
-            id: randomId,
-            order_status: 'active',
-            quantity: 20,
-            first_name: 'Tom',
-            last_name: 'Brady',
-            name: 'basketball',
-            price: 25,
-        });
+        expect(response.body.order_details).toEqual([
+            {
+                id: randomId,
+                order_status: 'active',
+                first_name: 'Tom',
+                last_name: 'Brady',
+                quantity: 5,
+                name: 'basketball',
+                price: 25,
+            },
+            {
+                id: randomId,
+                order_status: 'active',
+                first_name: 'Tom',
+                last_name: 'Brady',
+                quantity: 8,
+                name: 'football',
+                price: 12,
+            },
+        ]);
     });
 });

@@ -13,8 +13,13 @@ create table users (
 
 create table orders (
     id serial primary key,
-    product_id bigint references products(id),
-    quantity integer,
     user_id bigint references users(id),
     order_status varchar(15)
+);
+
+create table ordered_products (
+    id serial primary key,
+    quantity integer,
+    order_id bigint references orders(id),
+    product_id bigint references products(id)
 );

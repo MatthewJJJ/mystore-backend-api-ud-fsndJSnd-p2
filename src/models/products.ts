@@ -35,8 +35,14 @@ export class ProductTable {
     async create(name: string, price: number): Promise<String> {
         try {
             const conn = await client.connect();
-            const sql = 'insert into products(name, price) values($1, $2);';
-            const result = await conn.query(sql, [name, price]);
+            const maxId = await conn.query('select max(id) from products;');
+            const sql =
+                'insert into products(id, name, price) values($1, $2, $3);';
+            const result = await conn.query(sql, [
+                maxId.rows[0].max + 1, // had to add this because test data generation was messing up table sequence
+                name,
+                price,
+            ]);
             conn.release();
             return JSON.stringify(result);
         } catch (error) {
