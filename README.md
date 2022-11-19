@@ -33,6 +33,7 @@ SECRET=asjdfklasjf7234823748&\*@
     `db-migrate up`
     `db-migrate up --config database.json -e test`
 -   At this point you should have a my_store and my_store_test database with the current tables provisioned
+-   You should also have the right test data provisioned in the database so the Postman Collection requests should return some data
 
 **Note: Make sure to check the password! Also, check the password in database.json**
 
