@@ -6,35 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "Products Create",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Basketball Returning Machine\",\r\n    \"price\": 4000\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/products",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"products"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Products Index",
 			"request": {
 				"auth": {
@@ -75,6 +46,76 @@
 					"path": [
 						"api",
 						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Products Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Basketball Returning Machine\",\r\n    \"price\": 4000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users Index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users Show",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
 						"1"
 					]
 				}
@@ -143,47 +184,6 @@
 			"response": []
 		},
 		{
-			"name": "Users Index",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/api/users",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Users Show",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/api/users/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"users",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Orders Show",
 			"request": {
 				"method": "GET",
@@ -215,7 +215,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQ2hlcnkiLCJsYXN0X25hbWUiOiJKb2huIiwiaGFzaGVkX3Bhc3N3b3JkIjoiJDJiJDA0JHZqbUc2V0IvR1hZRGprbldYQ0ZUTC5MSnJrSy9SZnVyQk9aNGpUMmVKQzFLaFh5NENSL1JhIiwiaWF0IjoxNjY4Nzk4MzI1fQ.Ytr1Vc6E5M_pYmXdxZaaY95wW1LFw8WFN09nRUuRZpw",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZmlyc3RfbmFtZSI6IkNoZXJ5IiwibGFzdF9uYW1lIjoiSm9obiIsInBhc3N3b3JkIjoiJDJiJDA0JGhsZEFpcGZ4aUt4TWJCOWFNLklubnVEQ25ZdXRwdHpocGczeWJiTng0WVZhcjc0aTNFYkZ1IiwiaWF0IjoxNjY4ODgyMTM0fQ.AFW_KvT4z4Us_R61ihoIiJYnZ9G2-HCOp5IuuCmC5z0",
 				"type": "string"
 			}
 		]
