@@ -26,6 +26,7 @@ SECRET=asjdfklasjf7234823748&\*@
 
 ### Database Setup
 
+-   Database is running on default Postgres port (5432)
 -   Create two databases my_store and my_store_test on your default Postgres server
 -   Install migration libraries
     `npm install -g db-migrate db-migrate-pg`

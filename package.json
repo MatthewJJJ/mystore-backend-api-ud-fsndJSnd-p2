@@ -10,7 +10,7 @@
         "prettier": "prettier --config .prettierrc \"src/**/*.ts\" --write",
         "lint": "eslint src/**",
         "jasmine": "jasmine",
-        "test": "cross-env ENV=test jasmine-ts --random=false"
+        "test": "db-migrate up --config database.json -e test && cross-env ENV=test jasmine-ts --random=false"
     },
     "author": "Udacity",
     "license": "ISC",
